@@ -10,3 +10,7 @@ Updated the app.component.html file to display the messages.
 
 
 b2 - updated app.component.html file to display currency rates. 
+
+b3- Created PresentationTimeService class in TranslateandTime folder.
+Created TimeController. Add a GET request method to app.component.ts
+and displayed the converted times in the app.components.html file.

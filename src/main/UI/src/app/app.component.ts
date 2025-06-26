@@ -29,6 +29,7 @@ export class AppComponent implements OnInit{
   currentCheckOutVal!:string;
   welcomeMessageEN: string = "";
   welcomeMessageFR: string = "";
+  presentationTimeMessage: string = "";
 
 
     ngOnInit(){
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit{
 
       this.fetchWelcomeMessage('en');
       this.fetchWelcomeMessage('fr');
+      this.fetchPresentationTime();
  //     this.rooms=ROOMS;
 
 
@@ -104,6 +106,18 @@ export class AppComponent implements OnInit{
         console.error('Failed to fetch welcome message:', err);
       }
     });
+  }
+
+  fetchPresentationTime(): void {
+    this.httpClient.get('http://localhost:8080/api/presentation-time', { responseType: 'text' })
+      .subscribe({
+        next: (message: string) => {
+          this.presentationTimeMessage = message;
+        },
+        error: (err) => {
+          console.error('Error fetching time:', err);
+        }
+      });
   }
 
   }

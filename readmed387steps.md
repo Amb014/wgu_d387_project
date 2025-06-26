@@ -7,3 +7,6 @@ Imported ShowMessage class into Main method with threads.
 Updated the ApiConfig file 
 created HTTP GET request in app.component.ts file
 Updated the app.component.html file to display the messages. 
+
+
+b2 - updated app.component.html file to display currency rates. 

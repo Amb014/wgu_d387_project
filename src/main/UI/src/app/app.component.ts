@@ -27,6 +27,9 @@ export class AppComponent implements OnInit{
   request!:ReserveRoomRequest;
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
+  welcomeMessageEN: string = "";
+  welcomeMessageFR: string = "";
+
 
     ngOnInit(){
       this.roomsearch= new FormGroup({
@@ -34,6 +37,8 @@ export class AppComponent implements OnInit{
         checkout: new FormControl(' ')
       });
 
+      this.fetchWelcomeMessage('en');
+      this.fetchWelcomeMessage('fr');
  //     this.rooms=ROOMS;
 
 
@@ -82,6 +87,24 @@ export class AppComponent implements OnInit{
 
        return this.httpClient.get(this.baseURL + '/room/reservation/v1?checkin='+ this.currentCheckInVal + '&checkout='+this.currentCheckOutVal, {responseType: 'json'});
     }
+
+  fetchWelcomeMessage(lang: string): void {
+    this.httpClient.get('http://localhost:8080/api/welcome', {
+      params: { lang },
+      responseType: 'text'
+    }).subscribe({
+      next: (message: string) => {
+        if (lang === 'en') {
+          this.welcomeMessageEN = message;
+        } else if (lang === 'fr') {
+          this.welcomeMessageFR = message;
+        }
+      },
+      error: (err) => {
+        console.error('Failed to fetch welcome message:', err);
+      }
+    });
+  }
 
   }
 

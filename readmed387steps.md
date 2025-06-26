@@ -1,0 +1,9 @@
+B1 a - created the resource bundle named messages
+
+B1 b - displayed the french and english message using multithreading. 
+Created a folder named TranslateandTime to house the contoller and class.
+Created ShowMessage class. Created MessageController. 
+Imported ShowMessage class into Main method with threads. 
+Updated the ApiConfig file 
+created HTTP GET request in app.component.ts file
+Updated the app.component.html file to display the messages. 
